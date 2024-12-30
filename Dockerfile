@@ -7,8 +7,8 @@ ENV GO111MODULE=on \
 
 WORKDIR /build
 
-COPY . .
-
+COPY build .
+RUN go mod download
 RUN go build -o my-web ../cmd/main.go
 
 EXPOSE 8080
