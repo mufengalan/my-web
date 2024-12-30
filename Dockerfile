@@ -5,12 +5,12 @@ ENV GO111MODULE=on \
     GOOS=linux \
     GOARCH=amd64
 
-WORKDIR /build
+WORKDIR /app
 
-COPY build .
+COPY . .
 RUN go mod download
-RUN go build -o my-web ../cmd/main.go
+RUN go app -o my-web ../cmd/main.go
 
 EXPOSE 8080
 
-CMD ["/build/my-web"]
+CMD ["/app/my-web"]
