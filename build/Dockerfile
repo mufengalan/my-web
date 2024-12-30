@@ -9,7 +9,7 @@ WORKDIR /build
 
 COPY . .
 
-RUN go build -o my-web ./cmd/main.go
+RUN go build -o my-web ../cmd/main.go
 
 EXPOSE 8080
 
