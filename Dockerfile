@@ -9,7 +9,7 @@ WORKDIR /app
 
 COPY . .
 RUN go mod download
-RUN go app -o my-web ../cmd/main.go
+RUN go build -o my-web ../cmd/main.go
 
 FROM alpine:latest
 
