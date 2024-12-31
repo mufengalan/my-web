@@ -1,6 +1,11 @@
 package model
 
 type Example struct {
-	ID   int    `column:"id AUTO_INCREMENT" json:"id"`
-	Name string `column:"name" json:"name"`
+	BaseModel
+	Name string `gorm:"column:name;type:varchar(255);not null" json:"name"`
+}
+
+// TableName 获取表名
+func (m *Example) TableName() string {
+	return "examples"
 }
