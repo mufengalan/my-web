@@ -9,7 +9,9 @@ WORKDIR /app
 
 COPY . .
 RUN go mod download
-RUN go build -o my-web ./cmd/main.go
+RUN go get github.com/githubnemo/CompileDaemon
+ENTRYPOINT CompileDaemon --build="go build -o my-web ./cmd/main.go" --command=./my-web
+#RUN go build -o my-web ./cmd/main.go
 
 FROM alpine:latest
 
