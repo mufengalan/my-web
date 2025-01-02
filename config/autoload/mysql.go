@@ -17,26 +17,22 @@ type MysqlConfig struct {
 	Charset  string `default:"utf8mb4" mapstructure:"charset"`
 }
 
-var Mysql = MysqlConfig{
-	Host:     "localhost",
-	Port:     "3306",
-	DBName:   "local",
-	Username: "root",
-	Password: "123456",
-	Charset:  "utf8mb4",
+var mysqlConfig = MysqlConfig{
+	DBName:  "local",
+	Charset: "utf8mb4",
 }
 
 var GormDb *gorm.DB
 
-func InitMysql() {
+func InitMysql(cnf MysqlConfig) {
 	//连接mysql
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=%s&parseTime=True&loc=Local",
-		Mysql.Username,
-		Mysql.Password,
-		Mysql.Host,
-		Mysql.Port,
-		Mysql.DBName,
-		Mysql.Charset,
+		cnf.Username,
+		cnf.Password,
+		cnf.Host,
+		cnf.Port,
+		mysqlConfig.DBName,
+		mysqlConfig.Charset,
 	)
 	configs := &gorm.Config{}
 	var err error

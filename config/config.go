@@ -16,8 +16,7 @@ type Conf struct {
 }
 
 func Load() {
-	config := &configor.Config{ENVPrefix: "-"}
-	if err := configor.New(config).Load(&conf, "/competition-tool-api/etc/config.yaml", "config.yaml", "../config.yaml"); err != nil {
+	if err := configor.Load(&conf, "/etc/config.yaml"); err != nil {
 		panic(err)
 	}
 }
