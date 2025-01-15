@@ -1,4 +1,4 @@
-FROM golang:1.23.0-alpine AS builder
+FROM registry.cn-hangzhou.aliyuncs.com/golang:1.23.0-alpine AS builder
 
 ENV GO111MODULE=on \
     GOPROXY=https://goproxy.cn,direct \
@@ -13,7 +13,7 @@ RUN go mod download
 #ENTRYPOINT CompileDaemon --build="go build -o my-web ./cmd/main.go" --command=./my-web
 RUN go build -o my-web ./cmd/main.go
 
-FROM alpine:latest
+FROM registry.cn-hangzhou.aliyuncs.com/alpine:latest
 
 # 安装 tzdata 包，确保支持时区的配置
 #RUN apk add --no-cache tzdata
