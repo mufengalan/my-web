@@ -10,7 +10,7 @@ func GetList(c *gin.Context) {
 	src := service.NewExampleService()
 	list, err := src.GetExampleList()
 	if err != nil {
-		response.Err(c, -100, err.Error())
+		response.Err(c, -101, err.Error())
 		return
 	}
 	response.Success(c, list)
