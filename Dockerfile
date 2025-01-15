@@ -16,7 +16,7 @@ RUN go build -o my-web ./cmd/main.go
 FROM alpine:latest
 
 # 安装 tzdata 包，确保支持时区的配置
-RUN apk add --no-cache tzdata
+#RUN apk add --no-cache tzdata
 
 # 设置工作目录为 /app
 WORKDIR /app
