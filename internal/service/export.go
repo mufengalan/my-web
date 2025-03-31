@@ -22,7 +22,7 @@ func (s *ExportService) Export(data []byte) error {
 	for _, v := range exportRes.Data {
 		showNameUrlMap[v.ShowName] = v.URL
 	}
-	f, err := excelize.OpenFile("file/template_upload.xlsx")
+	f, err := excelize.OpenFile("file/template_upload_new.xlsx")
 	if err != nil {
 		return err
 	}

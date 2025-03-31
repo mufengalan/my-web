@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"github.com/mufengalan/my-web/config"
 	"github.com/mufengalan/my-web/config/autoload"
 	"github.com/mufengalan/my-web/internal/routers"
@@ -15,7 +14,6 @@ func main() {
 		Username: config.Items().Mysql.Username,
 		Password: config.Items().Mysql.Password,
 	}
-	fmt.Println(cnf)
 	autoload.InitMysql(cnf)
 	routers.InitRouter()
 }
