@@ -7,6 +7,8 @@ import (
 )
 
 func main() {
+	logger := autoload.InitZapLogger()
+	defer logger.Sync() // 确保退出前刷新日志
 	config.Load()
 	cnf := autoload.MysqlConfig{
 		Host:     config.Items().Mysql.Host,
@@ -15,5 +17,5 @@ func main() {
 		Password: config.Items().Mysql.Password,
 	}
 	autoload.InitMysql(cnf)
-	routers.InitRouter()
+	routers.InitRouter(logger)
 }
